@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display&display=swap');
+
+$font-family-base: 'Lora', serif;
+$font-family-heading: 'Playfair Display', serif;
+
+$font-size-base: 16px;
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+}
+
+.page-content {
+  width: 90%;
+  max-width: 47.5em;
+  margin: 0 auto;
+}
