@@ -22,11 +22,11 @@ title: robbert.rocks
 description: >- # this means to ignore newlines until "baseurl:"
   I am passionate about software engineering, software architecture, and code with a clean and a solid design.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://robbert.rocks" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: robbertstevens
 github_username:  robbertstevens
 linkedin_username: robbertstevens
-google_analytics: dafsfas
+google_analytics: "G-QGBPCSH2K7"
 
 # Build settings
 plugins:
