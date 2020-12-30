@@ -2,5 +2,3 @@
 template: null
 ---
 Sitemap: https://robbert.rocks/sitemap.xml
-User-agent: *
-Disallow: /
