@@ -12,4 +12,33 @@ layout: default
         {{ content }}
     </article>
 
+    <aside>
+        {% if site.twitter_username %}
+        <p>
+            If you liked this post or want to discuss something you can contact me on
+            <a href="https://twitter.com/robbertstevens">twitter</a>
+        </p>
+        {% endif %}
+
+        <div class="more-posts">
+            {% if page.previous %}
+            <div class="older">
+                Read an older post: <br>
+
+                <a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
+            </div>
+
+            {% endif %}
+            {% if page.next %}
+            <div class="older">
+                Read an newer post: <br>
+
+                <a href="{{ page.next.url }}">{{ page.next.title }}</a>
+            </div>
+
+            {% endif %}
+        </div>
+
+    </aside>
+
 </div>

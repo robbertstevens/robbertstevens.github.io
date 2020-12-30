@@ -1,24 +1,20 @@
 <footer>
-    {% if site.github_username %}
-    <a rel="me" href="https://github.com/{{ site.github_username | cgi_escape | escape }}"
-       title="{{ site.github_username | escape }}">
-       github
-    </a>
-    {% endif %}
+    <p>
+        &copy; 2019-{{ site.time | date: "%Y" }} Robbert Stevens
 
-    {% if site.linkedin_username %}
-    <a rel="me" href="https://www.linkedin.com/in/{{ site.linkedin_username | cgi_escape | escape }}"
-       title="{{ site.linkedin_username | escape }}">
-        linkedin
-    </a>
-    {% endif %}
+        {% if site.github_username %}
+        <a rel="me" href="https://github.com/{{ site.github_username | cgi_escape | escape }}"
+           title="{{ site.github_username | escape }}">github</a>
+        {% endif %}
 
-    {% if site.twitter_username %}
-    <a rel="me" href="https://twitter.com/{{ site.twitter_username | cgi_escape | escape }}"
-       title="{{ site.twitter_username | escape }}">
-        twitter
-    </a>
-    {% endif %}
+        {% if site.linkedin_username %}
+        <a rel="me" href="https://www.linkedin.com/in/{{ site.linkedin_username | cgi_escape | escape }}"
+           title="{{ site.linkedin_username | escape }}">linkedin</a>
+        {% endif %}
 
-    <p>&copy; 2019-{{ site.time | date: "%Y" }}</p>
+        {% if site.twitter_username %}
+        <a rel="me" href="https://twitter.com/{{ site.twitter_username | cgi_escape | escape }}"
+           title="{{ site.twitter_username | escape }}">twitter</a>
+        {% endif %}
+    </p>
 </footer>

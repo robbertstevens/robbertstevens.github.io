@@ -6,15 +6,15 @@ $heading-font: 'Playfair Display', serif;
 $highlight-color: #202329;
 $base-color: #050404;
 
-body {
-  font-size: 1rem;
-  background: #eeebe3;
-  color: $base-color
+html {
+  font-size: 62.5%;
 }
 
 body {
+  font-size: 2rem;
+  background: #eeebe3;
+  color: $base-color;
   font-family: $base-font;
-  font-size: 1.2rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .page-content {
   width: 90%;
-  max-width: 47.5rem;
+  max-width: 80rem;
   margin: 0 auto;
 }
 
@@ -36,14 +36,62 @@ pre.highlight {
 
 a {
   color: #009a9c;
+
+  &:visited {
+    color: #025253;
+  }
+
+  &:hover {
+    color: $base-color;
+  }
 }
 
-a:visited {
-  color: #025253;
+ul.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-a:hover {
-  color: $base-color;
+.post-list li {
+  width: 100%;
+  display: grid;
+  vertical-align: text-top;
+  grid-template-columns: 15rem auto;
+  grid-template-rows: min-content;
+  gap: 1rem 1rem;
+  grid-template-areas:
+    "meta title";
+
+  .post-meta {
+    grid-area: meta;
+  }
+
+  .post-link {
+    grid-area: title;
+  }
 }
 
+.post aside {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 10px
+}
 
+.more-posts {
+  width: 100%;
+  display: grid;
+  vertical-align: text-top;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "prev next";
+
+  .newer {
+    grid-area: prev;
+  }
+}
+
+footer {
+  font-size: 1.5rem;
+  font-variant: small-caps;
+  text-align: center;
+}

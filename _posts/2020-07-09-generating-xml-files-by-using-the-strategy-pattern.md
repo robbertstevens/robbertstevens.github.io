@@ -1,12 +1,11 @@
 ---
 layout: post
 title:  "Generating XML files by using the strategy pattern"
-date:   2020-12-29 15:42:55 +0100
-categories: jekyll update
+date:   2020-07-09 13:37:00 +0100
 ---
-A while back we had a problem in a project of ours in which we had to send a couple of different
+A while back we had a problem in a project of ours in which we had to send a couple of different 
 XML files to a remote server. The way we had to transfer was the same for all types of XML files.
-We started out with various the classes that looked like this.
+We started out with various the classes that looked like this. 
 
 ```php
 final class XmlTransferCustomer
@@ -30,19 +29,19 @@ final class CustomerXmlGenerator
 }
 ```
 
-As you can imagine after a while we got a lot of the same classes. So we searched for a solution.
-We came up with something that uses the [strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern).
+As you can imagine after a while we got a lot of the same classes. So we searched for a solution. 
+We came up with something that uses the [strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern). 
 
 ## Strategy Pattern
-The strategy pattern is a design pattern in which you define a generic task with different ways to get
-the same result, in our case an XML file. All the different ways to generate an XML file will be split in
+The strategy pattern is a design pattern in which you define a generic task with different ways to get 
+the same result, in our case an XML file. All the different ways to generate an XML file will be split in 
 different classes, called 'strategies'. The 'task' class will then select which strategy is the right one
 to run the logic for a given input. Let me show you the gist of our solution.
 
 ## Implementation
-First we started with defining an interface for the entities that had to be transferred,
-`TransferableInterface`. This was just an empty interface, just for the purpose of recognizing
-the entities that can be passed to the `XmlTransfer` class. The `XmlTransfer` class looks like
+First we started with defining an interface for the entities that had to be transferred, 
+`TransferableInterface`. This was just an empty interface, just for the purpose of recognizing 
+the entities that can be passed to the `XmlTransfer` class. The `XmlTransfer` class looks like 
 this now.
 
 ```php
@@ -59,8 +58,8 @@ final class XmlTransfer
 }
 ```
 
-As you can see the class we added is basically the same as `XmlTransferCustomer`, but instead of accepting a
-`Customer`-object we accept the `TransferableInterface`. Now we had to create a new `XmlGenerator`-class
+As you can see the class we added is basically the same as `XmlTransferCustomer`, but instead of accepting a 
+`Customer`-object we accept the `TransferableInterface`. Now we had to create a new `XmlGenerator`-class 
 which accepts a `TransferableInterface`-object.
 
 ```php
@@ -80,7 +79,7 @@ final class XmlGenerator
 }
 ```
 
-In the code you see that we loop over an array called generators, this is an array which only contains classes
+In the code you see that we loop over an array called generators, this is an array which only contains classes 
 of the type `XmlGeneratorStrategyInterface`, the interface looks like this.
 
 ```php
@@ -89,8 +88,8 @@ interface XmlGeneratorStrategyInterface {
     public function generator(TransferableInterface $entity): Xml;
 }
 ```
-We keep looping over the `$this->generators` list until we find a generator that supports the given
-entity. In the example implementation we won't do anything if none of the generators support the
+We keep looping over the `$this->generators` list until we find a generator that supports the given 
+entity. In the example implementation we won't do anything if none of the generators support the 
 given entity, but you could throw an exception or a [null object](https://en.wikipedia.org/wiki/Null_object_pattern).
 
 An example implementation looks like this.
@@ -113,8 +112,8 @@ final class CustomerXmlGeneratorStrategy implements XmlGeneratorStrategyInterfac
 ```
 
 ## Using this with Symfony
-Last we had to inject classes that implement the `XmlGeneratorStrategyInterface` into the
-`XmlGenerator` class. Since we used Symfony in this project, we can easily do this in the
+Last we had to inject classes that implement the `XmlGeneratorStrategyInterface` into the 
+`XmlGenerator` class. Since we used Symfony in this project, we can easily do this in the 
 service container by adding this to our `services.yml`
 
 ```yml
@@ -129,11 +128,10 @@ services:
             $generators: !tagged_iterator xml.generators
 ```
 
-What this does is it will tag all classes which implement `XmlGeneratorStrategyInterface` with the
-tag `xml.generators`. When we inject `XmlGenerator` in a class the service container will inject
+What this does is it will tag all classes which implement `XmlGeneratorStrategyInterface` with the 
+tag `xml.generators`. When we inject `XmlGenerator` in a class the service container will inject 
 all the implementation of `XmlGeneratorStrategyInterface` into the `$generators` property.
 
-The result of this implementation that it's much easier to transfer other entities, because you
-only have to implement the `TransferableInterface` on the entity and create a new class which
+The result of this implementation that it's much easier to transfer other entities, because you 
+only have to implement the `TransferableInterface` on the entity and create a new class which 
 implements `XmlGeneratorStrategyInterface`.
-
