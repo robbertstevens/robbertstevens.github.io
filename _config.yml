@@ -33,7 +33,7 @@ plugins:
   - jekyll-feed
 
 sass:
-  #style: compressed
+  style: compressed
   sass_dir: _sass
 
 permalink: /:title
