@@ -1,21 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display&display=swap');
 
-$font-family-base: 'Lora', serif;
-$font-family-heading: 'Playfair Display', serif;
+$base-font: 'Lora', serif;
+$heading-font: 'Playfair Display', serif;
 
-$font-size-base: 16px;
+$highlight-color: #202329;
+$base-color: #050404;
+
+html {
+  font-size: 1rem;
+  background: #eeebe3;
+  color: $base-color
+}
 
 body {
-  font-family: $font-family-base;
-  font-size: $font-size-base;
+  font-family: $base-font;
+  font-size: 1.2rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family-heading;
+  font-family: $heading-font;
+  color: $highlight-color
 }
 
 .page-content {
   width: 90%;
-  max-width: 47.5em;
+  max-width: 47.5rem;
   margin: 0 auto;
 }
+
+pre.highlight {
+  background: #fff;
+  padding: 1rem;
+  overflow-x: scroll;
+}
+
+a {
+  color: #009a9c;
+}
+
+a:visited {
+  color: #025253;
+}
+
+a:hover {
+  color: $base-color;
+}
+
+
