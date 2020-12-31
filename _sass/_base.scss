@@ -59,23 +59,27 @@ ul.post-list {
 
 .post-list li {
   width: 100%;
-  display: grid;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   vertical-align: text-top;
-  grid-template-columns: 15rem auto;
-  grid-template-rows: min-content;
-  gap: 1rem 1rem;
-  grid-template-areas:
-    "meta title";
 
   .post-meta {
-    grid-area: meta;
+    width: 100%;
+    max-width: 150px;
+    order: 0;
   }
 
   .post-link {
-    grid-area: title;
+    width: auto;
+    order: 1
   }
 }
-
+@media all and (max-width: 600px) {
+  .post-list li {
+    flex-wrap: wrap;
+  }
+}
 .post aside {
   background: rgba(0, 0, 0, 0.1);
   padding: 10px
