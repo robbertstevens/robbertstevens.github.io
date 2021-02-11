@@ -4,7 +4,7 @@ title:  "Implementing a simple AI for games in Godot"
 date:   2021-02-10 13:37:00 +0100
 ---
 In my spare time, I like to create games in so-called [game jams](https://en.wikipedia.org/wiki/Game_jam). An event in 
-which you create a game in a set amount of time.
+which you create a game in a set amount of time. My engine of choice is Godot, because it's simple and powerful.
 
 In my game "Dave & The Machine", I've implemented a super simple enemy AI using a finite state machine, which worked 
 wonders for the game I've created in [Mini Jam 73](https://robbertstevens.itch.io/dave-and-the-machine).
@@ -79,6 +79,8 @@ func _chase_state():
 As you can see the method is very similar to the `_idle_state()`-method. This is what I do:
 1. First I check if there is still a target, if not I go to the idle state after all the enemy can't case nothing.
 3. If there is a target, then the enemy moves in the direction of the target.
+
+You can find the complete implementation of my game on my [github](https://github.com/robbertstevens/minijam73).
 
 ## Conclusion 
 This is a very bare-bones implementation of the Finite State Machine design pattern, but for my use case, it was enough.
